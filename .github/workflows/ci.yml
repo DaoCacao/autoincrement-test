@@ -9,10 +9,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Increment version code
-        env:
-          TOKEN: ${{ secrets.REPOSITORY_VARS_TOKEN }}
         run: |
           VERSION_CODE=$(( VERSION_CODE+1 ))
+          TOKEN=${{ secrets.REPOSITORY_VARS_TOKEN }}
           curl -L \
           -X PATCH \
           -H "Accept: application/vnd.github+json" \
